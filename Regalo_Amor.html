@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Para mi amor</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(to right, #ffe4e1, #ffc0cb);
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    h1, h2 {
+      text-align: center;
+    }
+    .hidden {
+      display: none;
+    }
+    button {
+      margin: 5px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background-color: #ff1493;
+    }
+    .box {
+      max-width: 600px;
+      background-color: #fff0f5;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1>Hola amor 💖</h1>
+    <p>Se que estamos pasando tiempos difíciles... estuve practicando mucho para que me salga este pequeño detalle...</p>
+    <p>Por favor ingresa tu bello nombre:</p>
+    <input type="text" id="nombreInput" placeholder="Escribe tu nombre..." />
+    <button onclick="validarNombre()">Aceptar</button>
+
+    <div id="menu" class="hidden">
+      <h2>Espero te guste 💌</h2>
+      <p>Elige una opción:</p>
+      <button onclick="mostrarMensaje(1)">1. Frase romántica</button>
+      <button onclick="mostrarMensaje(2)">2. Saber por qué te amo</button>
+      <button onclick="mostrarMensaje(3)">3. Leer un mini poema</button>
+      <button onclick="salir()">4. Salir</button>
+      <div id="mensaje" style="margin-top: 20px; font-weight: bold;"></div>
+    </div>
+
+    <div id="rechazo" class="hidden">
+      <p>Lo siento pero este regalo es para mi princesa 👑</p>
+    </div>
+  </div>
+
+  <script>
+    function validarNombre() {
+      const nombre = document.getElementById('nombreInput').value.trim();
+      if (nombre.toLowerCase() === "dalila") {
+        document.getElementById('menu').classList.remove('hidden');
+        document.getElementById('rechazo').classList.add('hidden');
+      } else {
+        document.getElementById('rechazo').classList.remove('hidden');
+        document.getElementById('menu').classList.add('hidden');
+      }
+    }
+
+    function mostrarMensaje(opcion) {
+      const mensajeDiv = document.getElementById('mensaje');
+      switch(opcion) {
+        case 1:
+          mensajeDiv.textContent = "En un mundo de diferentes mentes... quiero que seamos los únicos locos 🫶";
+          break;
+        case 2:
+          mensajeDiv.textContent = "El por qué te amo se puede hacer muy eterno, tan eterno como el amor que siento por ti que quiero seguir sintiéndolo toda mi vida 💖";
+          break;
+        case 3:
+          mensajeDiv.textContent = "En este mundo de flores... tú eres la única que quiero plantar en mi corazón 🌹";
+          break;
+      }
+    }
+
+    function salir() {
+      document.getElementById('menu').classList.add('hidden');
+      document.getElementById('mensaje').textContent = "Gracias por haber dedicado algunos minutos a este regalo... Te amo 💞";
+    }
+  </script>
+</body>
+</html>
